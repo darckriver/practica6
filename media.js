@@ -1,5 +1,5 @@
 
-
+/*
         // Wait for Cordova to load
         //
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -81,3 +81,13 @@
         function setAudioPosition(position) {
             document.getElementById('audio_position').innerHTML = position;
         }
+*/
+document.addEventListener("deviceready", function(){
+	var options = { limit: 3, duration: 10 };
+navigator.device.capture.captureAudio(function(mediafiles){
+ 	alert(mediafiles)
+}, function(err){
+	alert(err.code);
+	)}, options);
+	
+},false);

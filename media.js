@@ -82,12 +82,35 @@
             document.getElementById('audio_position').innerHTML = position;
         }
 */
- document.addEventListener("deviceready", function(){
-	var options = { limit: 3, duration: 10 };
-navigator.device.capture.captureAudio(function(mediafiles){
- 	alert(mediafiles);
-}, function(err){
-	alert(err.code);
+
+function inspeccionar(obj)
+{
+  var msg = '';
+  for (var property in obj)
+  {
+    if (typeof obj[property] == 'function')
+    {
+      var inicio = obj[property].toString().indexOf('function');
+      var fin = obj[property].toString().indexOf(')')+1;
+      var propertyValue=obj[property].toString().substring(inicio,fin);
+      msg +=(typeof obj[property])+' '+property+' : '+propertyValue+' ;\n';
+    }
+    else if (typeof obj[property] == 'unknown')
+    {
+      msg += 'unknown '+property+' : unknown ;\n';
+    }
+    else
+    {
+      msg +=(typeof obj[property])+' '+property+' : '+obj[property]+' ;\n';
+    }
+  }
+  return msg;
+}
+document.addEventListener("deviceready", function(){
+	var options = { limit: 1 };
+	navigator.device.capture.captureImage(function(mediaFiles){
+		$('img').attr('src',mediaFiles[0].fullPath);
+	}, function(err){
+		alert(err.code);
 	}, options);
-	
-},false);
+}, false);

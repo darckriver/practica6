@@ -113,4 +113,16 @@ document.addEventListener("deviceready", function(){
 	}, function(err){
 		alert(err.code);
 	}, options);
+	
+	function onSuccess(heading) {
+    alert('Heading: ' + heading.magneticHeading);
+};
+
+function onError(error) {
+    alert('CompassError: ' + error.code);
+};
+
+navigator.compass.getCurrentHeading(onSuccess, onError);
+	
+	
 }, false);

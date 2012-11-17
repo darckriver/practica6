@@ -82,12 +82,12 @@
             document.getElementById('audio_position').innerHTML = position;
         }
 */
-document.addEventListener("deviceready", function(){
+ document.addEventListener("deviceready", function(){
 	var options = { limit: 3, duration: 10 };
 navigator.device.capture.captureAudio(function(mediafiles){
- 	alert(mediafiles)
+ 	alert(mediafiles);
 }, function(err){
 	alert(err.code);
-	)}, options);
+	}, options);
 	
 },false);
